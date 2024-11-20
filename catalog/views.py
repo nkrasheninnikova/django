@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
 from django.views import generic
 
+
 def index(request):
 
     num_authors=Author.objects.count()  # The 'all()' is implied by default.
@@ -26,5 +27,6 @@ class BookDetailView(generic.DetailView):
 class BookListView(generic.ListView):
     model = Book
     paginate_by = 2
+
 
 

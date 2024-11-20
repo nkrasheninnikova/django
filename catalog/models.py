@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 import uuid
 
+
+
+
+
 class MyModelName(models.Model):
     """Типичный класс модели, производный от класса Model."""
 
@@ -77,6 +81,7 @@ class BookInstance(models.Model):
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
 
+
     LOAN_STATUS = (
         ('m', 'Maintenance'),
         ('o', 'On loan'),
@@ -85,6 +90,7 @@ class BookInstance(models.Model):
     )
 
     status = models.CharField(max_length=1, choices=LOAN_STATUS, blank=True, default='m', help_text='Book availability')
+
 
     class Meta:
         ordering = ["due_back"]
@@ -95,6 +101,9 @@ class BookInstance(models.Model):
         String for representing the Model object
         """
         return '%s (%s)' % (self.id,self.book.title)
+
+
+
 
 class Author(models.Model):
     """
