@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 import datetime
 
 from django.contrib.auth.decorators import login_required, permission_required
@@ -44,6 +43,12 @@ class BookDetailView(generic.DetailView):
 class BookListView(generic.ListView):
     model = Book
     paginate_by = 2
+
+class AuthorListView(generic.ListView):
+    model = Author
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
 
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """
