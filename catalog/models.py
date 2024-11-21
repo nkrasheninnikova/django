@@ -8,6 +8,9 @@ from datetime import date
 
 
 
+
+
+
 class MyModelName(models.Model):
     """Типичный класс модели, производный от класса Model."""
 
@@ -136,5 +139,4 @@ class Author(models.Model):
         String for representing the Model object.
         """
         return '%s, %s' % (self.last_name, self.first_name)
-
 
