@@ -7,7 +7,20 @@
   <p><strong>Summary:</strong> {{ book.summary }}</p>
   <p><strong>ISBN:</strong> {{ book.isbn }}</p>
   <p><strong>Language:</strong> {{ book.language }}</p>
-  <p><strong>Genre:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  <p><strong>Genre:{% if book.genre.count == 1 %}
+            {% for genre in book.genre.all %}
+            <span style="color: red">{{ genre.name }}</span>
+            {% endfor %}
+        {% elif book.genre.count == 2 %}
+            {% for genre in book.genre.all %}
+                <span style="color: green">{{ genre.name }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for genre in book.genre.all %}
+                <span style="color: aqua">{{ genre.name }}</span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        {% endif %}
+  </p>
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Copies</h4>
